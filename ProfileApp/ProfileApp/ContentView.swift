@@ -1,130 +1,135 @@
 //
 //  ContentView.swift
-//  ProfileApp
+//  PA
 //
-//  Created by Sahil on 27/07/24.
+//  Created by Sahil on 28/07/24.
 //
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ZStack {
+        ZStack(alignment: .center) {
             Image("background")
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
-            VStack(alignment: .center) {
-                VStack(alignment: .center, spacing: 20) {
-                    Image("myImage")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 180, height: 180, alignment: .top)
-                        .clipShape(Circle())
-                        .shadow(color: .pink, radius: 5, x: 5, y: 5)
-                    
-                    Text("Emma Jackson")
-                        .foregroundStyle(.white)
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .fontDesign(.default)
-                    
-                    Text(" iOS | Front end Developer")
-                        .font(.title3)
-                        .fontWeight(.regular)
-                        .fontDesign(.default)
-                        .foregroundStyle(.white)
-                    
-                    URL()
-                }
-                .padding(.top, 20)
-                Spacer()
-                
-                VStack(alignment: .center, spacing: 30) {
-                    Follow()
-                }
-                .padding(.bottom, 1)
-                
-                HStack {
-                    VStack {
-                        Text("1775")
-                            .font(.system(size: 30))
-                            .foregroundStyle(.pink)
-                        Text("Appreciation")
-                            .foregroundStyle(.secondary)
-                    }
-                    .padding(.horizontal)
-                    VStack {
-                        Text("800")
-                            .font(.system(size: 30))
-                            .foregroundStyle(.pink)
-                        Text("Follower")
-                            .foregroundStyle(.secondary)
-                    }
-                    .padding(.horizontal)
-                    VStack {
-                        Text("231")
-                            .font(.system(size: 30))
-                            .foregroundStyle(.pink)
-                        Text("Following")
-                            .foregroundStyle(.secondary)
-                    }
-                    .padding(.horizontal)
-                    
-                }
-                VStack(alignment: .center, spacing: 10) {
-                    Text("About You")
-                        .font(.largeTitle)
-                        .padding()
-                    Text("I'm a iOS Frontend Developer. Welcome to the series of iOS-15 projects. Let's dive deeper and create some more exciting projects.")
-                        .font(.system(size: 18))
-                        .padding([.leading, .trailing, .bottom], 10)
-                        .foregroundColor(.black)
-                }
-                .lineLimit(nil)
-            }
-            .padding(.top, 20)
+            ImgNameDesigURL()
+            Follow()
+            Engagement()
+            About()
         }
     }
 }
-
 
 #Preview {
     ContentView()
 }
 
-struct URL: View {
+struct ImgNameDesigURL: View {
     var body: some View {
-        HStack {
+        VStack(alignment: .center) {
+            Image("myImage")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 200, height: 180)
+                .clipShape(Circle())
+                .shadow(color: .pink, radius: 10, x: 5, y: 5)
+                .padding(.top, 40)
+                .padding(.bottom, 10)
             Group {
-                Image(systemName: "heart.circle")
-                    .font(.system(size: 35))
-                Image(systemName: "network")
-                    .font(.system(size: 35))
-                Image(systemName: "message.circle")
-                    .font(.system(size: 35))
-                Image(systemName: "phone.circle")
-                    .font(.system(size: 35))
+                Text("Emily Jones")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(5)
+                Text("iOS | Front End Developer")
+                    .font(.title2)
+                    .padding(30)
+                HStack {
+                    Group {
+                        Image(systemName: "heart.circle")
+                        Image(systemName: "network")
+                        Image(systemName: "message.circle")
+                        Image(systemName: "phone.circle")
+                    }
+                    .font(.system(size: 40))
+                    .padding(.horizontal)
+                }
             }
-            .padding(10)
+            .foregroundColor(.white)
+            .shadow(color: .pink, radius: 10, x: 5, y: 5)
         }
-        .shadow(color: .pink, radius: 5, x: 5, y: 5)
-        .foregroundColor(.white)
+        .padding(.top, 30)
+        .offset(x: 0, y: -190)
     }
 }
 
 struct Follow: View {
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 120)
-                .frame(width: 210, height: 60)
+            RoundedRectangle(cornerRadius: 180)
+                .padding(9)
+                .frame(width: 250, height: 70, alignment: .center)
                 .foregroundColor(.white)
-                .shadow(color: .pink, radius: 10, x: 3, y: 5)
+                .shadow(color: .pink, radius: 10, x: 5, y: 5)
             Text("Follow")
                 .font(.largeTitle)
-                .fontWeight(.semibold)
                 .foregroundStyle(.pink)
+                .fontWeight(.bold)
+                .padding(40)
         }
-        .padding(.bottom, 40)
-        .offset(x: 0, y: 30)
+        .offset(x: 0, y: 115)
     }
 }
+
+struct Engagement: View {
+    var body: some View {
+        HStack(alignment: .center) {
+            Group {
+                VStack {
+                    Text("1775")
+                        .font(.largeTitle)
+                        .foregroundStyle(.pink)
+                    Text("Appreciation")
+                        .foregroundStyle(.secondary)
+                }
+                VStack {
+                    Text("800")
+                        .font(.largeTitle)
+                        .foregroundStyle(.pink)
+                    Text("Followers")
+                        .foregroundStyle(.secondary)
+                }
+                VStack {
+                    Text("231")
+                        .font(.largeTitle)
+                        .foregroundStyle(.pink)
+                    Text("Following")
+                        .foregroundStyle(.secondary)
+                }
+            }
+            .padding(.horizontal)
+        }
+        .offset(x: 0, y: 190)
+    }
+}
+
+struct About: View {
+    var body: some View {
+        Group {
+            VStack(alignment: .center) {
+                Text("About You")
+                    .font(.largeTitle)
+                    .padding()
+            }
+            .offset(x: 0, y: 270)
+            VStack(alignment:  .center) {
+                Text("I'm a iOS Frontend Developer. Welcome to the series of iOS-15 projects. Let's dive deeper and create some more exciting projects")
+                    .font(.title3)
+                    .fontWeight(.light)
+            }
+            .padding()
+            .offset(x: 0, y: 350)
+        }
+    }
+}
+
